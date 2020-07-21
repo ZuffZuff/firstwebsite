@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+  background: #D8E3AB;
+  height: 4.0em;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding-top: 0px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+.main {
+  width: 100%;
+  background: #ffffff;
+  height: 47em;
+  /*border: ;*/
+  
+  padding: 10px;
+  margin: 0px;
+}

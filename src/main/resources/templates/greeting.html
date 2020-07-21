@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="header.css" media="screen" rel="stylesheet" type="text/css"><!-- не удальсь подключить файл со стилями, пришлось прописать в теле этого файла -->
+    <style>
+        .header {
+            width: 100%;
+            background: #D8E3AB;
+            height: 4.0em;
+            border: 2px solid #000;
+            border-radius: 5px;
+            padding-top: 0px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            margin: 5px;
+        }
+
+        .main {
+            width: 100%;
+            background: #ffffff;
+            height: 47em;
+            /*border: ;*/
+
+            padding: 10px;
+            margin: 0px;
+        }
+    </style>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script >
+         function functionBefore(){<!-- функции на JS: 1. работает в ожидании результата запроса; 2. вывод результата запроса -->
+             $("#01").val("Waiting...");
+         }
+
+         function functionSuccess(data){
+             $("#01").val(data);
+         }
+                     $(document).ready(function () {<!-- отправка метода Post с помощью технологии ajax -->
+                         $("#03").bind("click", function () {
+                             //var columnNumber = $("#02").val();
+                             var columnNumberAndValueForSearch = "column=" + ($("#04").val()-1) +  "&search=" + $("#02").val();
+                             var url = "/getting";
+                             $.ajax({
+                                 url: url,
+                                 method: "post",
+                                 data: columnNumberAndValueForSearch,
+                                 dataType: "text",
+                                 beforeSend: functionBefore,
+                                 success: functionSuccess
+
+                             })
+                         })
+                     })
+
+
+         /*function buttonClick(TextArea) {
+             TextArea.innerHTML = "zzz";
+         }*/
+     </script>
+</head>
+<body>
+<header><div class="header"><h1>Airport's seeker</h1></div></header>
+<main>
+<div class="main">
+<p>Выбирите параметр поиска:
+<select id="04">
+  <option атрибуты>1</option>
+  <option атрибуты>2</option>
+  <option атрибуты>3</option>
+  <option атрибуты>4</option>
+  <option атрибуты>5</option>
+  <option атрибуты>6</option>
+  <option атрибуты>7</option>
+  <option атрибуты>8</option>
+  <option атрибуты>9</option>
+  <option атрибуты>10</option>
+  <option атрибуты>11</option>
+  <option атрибуты>12</option>
+  <option атрибуты>13</option>
+  <option атрибуты>14</option>
+</select>
+</p>
+<p>Поиск: <input type="text" id="02" size=80 placeholder="Введите параметр для поиска..."  /><input type = "button" id="03" name = "getting" value = "Получить" /></p>
+<textarea name = "textArea" id = "01" cols = "200" rows = "10" text="" readonly ></textarea>
+</div>
+</main>
+<footer><div class="header"></div></footer>
+
+
+
+</body>
+</html>
